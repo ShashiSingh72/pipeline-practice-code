@@ -68,5 +68,5 @@ jobs:
     - task: TerraformTask@5
       inputs:
         provider: 'azurerm'
-        command: 'apply'
+        command: 'destroy'
         environmentServiceNameAzureRM: 'kashi-dev-app'
