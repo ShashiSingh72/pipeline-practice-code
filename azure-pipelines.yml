@@ -3,10 +3,20 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+pool: dev-infra-pool
+jobs:
+  - job: 
+    steps: 
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: 'latest'
 
-steps:
-- task: TerraformInstaller@1
-  inputs:
-    terraformVersion: 'latest'
+      - task: TerraformTask@5
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          workingDirectory: '$(System.DefaultWorkingDirectory)env/dev'
+          backendServiceArm: 'kashi-dev-app'
+          backendAzureRmStorageAccountName: 'statefile89234'
+          backendAzureRmContainerName: 'statefile'
+          backendAzureRmKey: 'prod.terraform.tfstate'
