@@ -49,6 +49,7 @@ jobs:
         environmentServiceNameAzureRM: 'kashi-dev-app'
 
   - job: TERRAFORM_APPLY
+    dependsOn: TERRAFORM_PLAN
     steps:
 
     - task: TerraformInstaller@1
