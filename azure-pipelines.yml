@@ -26,6 +26,7 @@ jobs:
           command: 'validate'
 
   - job: TERRAFORM_PLAN
+    dependsOn: TERRAFORM_INIT
     steps:
 
     - task: TerraformInstaller@1
