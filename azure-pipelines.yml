@@ -5,7 +5,7 @@ trigger:
 
 pool: dev-infra-pool
 jobs:
-  - job: 
+  - job: TERRAFORM_INIT
     steps: 
       - task: TerraformInstaller@1
         inputs:
@@ -25,8 +25,24 @@ jobs:
           provider: 'azurerm'
           command: 'validate'
 
-      - task: TerraformTask@5
-        inputs:
-          provider: 'azurerm'
-          command: 'plan'
-          environmentServiceNameAzureRM: 'kashi-dev-app'
+  - job: TERRAFORM_PLAN
+    steps:
+
+    - task: TerraformInstaller@1
+      inputs:
+        terraformVersion: 'latest'
+
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'kashi-dev-app'
+        backendAzureRmStorageAccountName: 'devstg72'
+        backendAzureRmContainerName: 'devcontainer72'
+        backendAzureRmKey: 'terraform.tfstate'
+
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'kashi-dev-app'
