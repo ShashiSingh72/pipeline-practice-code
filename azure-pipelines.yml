@@ -15,8 +15,7 @@ jobs:
         inputs:
           provider: 'azurerm'
           command: 'init'
-          workingDirectory: '$(System.DefaultWorkingDirectory)env/dev'
           backendServiceArm: 'kashi-dev-app'
-          backendAzureRmStorageAccountName: 'statefile89234'
-          backendAzureRmContainerName: 'statefile'
-          backendAzureRmKey: 'prod.terraform.tfstate'
+          backendAzureRmStorageAccountName: 'devstg72'
+          backendAzureRmContainerName: 'devcontainer72'
+          backendAzureRmKey: 'terraform.tfstate'
