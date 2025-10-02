@@ -1,7 +1,6 @@
 
 
-trigger:
-- main
+trigger: none
 
 pool: dev-infra-pool
 jobs:
@@ -64,3 +63,9 @@ jobs:
         backendAzureRmStorageAccountName: 'devstg72'
         backendAzureRmContainerName: 'devcontainer72'
         backendAzureRmKey: 'terraform.tfstate'
+
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'kashi-dev-app'
