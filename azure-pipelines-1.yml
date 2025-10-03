@@ -21,9 +21,9 @@ stages:
            provider: 'azurerm'
            command: 'init'
            backendServiceArm: 'kashi-dev-app'
-           backendAzureRmStorageAccountName: 'dvestg72'
-           backendAzureRmContainerName: 'devcontainer72'
-           backendAzureRmKey: 'terraform.tfvars'
+           backendAzureRmStorageAccountName: 'statefile89234'
+           backendAzureRmContainerName: 'statefile'
+           backendAzureRmKey: 'prod.terraform.tfstate'
 
 
  - stage: TERRAFORM_VALIDATE
@@ -37,8 +37,8 @@ stages:
            provider: 'azurerm'
            command: 'init'
            backendServiceArm: 'kashi-dev-app'
-           backendAzureRmStorageAccountName: 'devstg72'
-           backendAzureRmContainerName: 'devcontainer72'
+           backendAzureRmStorageAccountName: 'statefile89234'
+           backendAzureRmContainerName: 'statefile'
            backendAzureRmKey: 'terraform.tfvars'
 
        - task: TerraformTask@5
@@ -57,8 +57,8 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'init'
-           backendAzureRmStorageAccountName: 'devstg72'
-           backendAzureRmContainerName: 'devcontainer72'
+           backendAzureRmStorageAccountName: 'statefile89234'
+           backendAzureRmContainerName: 'statefile'
            backendAzureRmKey: 'terraform.tfvars'
 
        - task: TerraformTask@5
