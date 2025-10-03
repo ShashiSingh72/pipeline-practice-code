@@ -47,6 +47,18 @@ stages:
            command: 'validate'
 
 
+ - stage: MANUAL_VALIDATION
+   displayName: MANUAL_VALIDATION
+   jobs:
+     - job: MANUAL_VALIDATION
+       steps: 
+
+       - task: ManualValidation@1
+         inputs:
+           notifyUsers: 'shashisingh223344@gmail.com'
+           approvers: 'shashisingh223344@gmail.com'
+           instructions: 'please check and approve'
+
  - stage: TERRAFORM_PLAN
    displayName: TERRAFORM_PLAN
    jobs:
