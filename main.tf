@@ -17,3 +17,7 @@ resource "azurerm_resource_group" "rg" {
   name = "dev-rg72"
   location = "eastus"
 }
+resource "azurerm_resource_group" "rg1" {
+  name = "dev-rg73"
+  location = "eastus"
+}
