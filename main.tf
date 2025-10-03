@@ -13,11 +13,11 @@ provider "azurerm" {
 }
 
 
-resource "azurerm_resource_group" "rg" {
-  name = "dev-rg72"
+resource "azurerm_resource_group" "rg2" {
+  name = "dev-rg71"
   location = "eastus"
 }
 resource "azurerm_resource_group" "rg1" {
-  name = "dev-rg73"
+  name = "dev-rg73" 
   location = "eastus"
 }
