@@ -13,11 +13,11 @@ provider "azurerm" {
 }
 
 
-resource "azurerm_resource_group" "rg12" {
-  name = "dev-rg80"
+resource "azurerm_resource_group" "rg13" {
+  name = "dev-rg82"
   location = "eastus"
 }
-resource "azurerm_resource_group" "rg13" {
-  name = "dev-rg81" 
+resource "azurerm_resource_group" "rg14" {
+  name = "dev-rg83" 
   location = "eastus"
 }
