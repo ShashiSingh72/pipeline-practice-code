@@ -1,7 +1,5 @@
-
-
-trigger: none
-
+trigger: 
+ - main
 pool: dev-infra-pool
 
 
