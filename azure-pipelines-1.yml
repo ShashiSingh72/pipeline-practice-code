@@ -1,0 +1,74 @@
+
+
+trigger: none
+
+pool: dev-infra-pool
+
+
+stages: 
+ - stage: TERRAFORM_INSTALL
+   displayName: TERRAFORM_INSTALL
+   jobs:
+     - job: TERRAFORM_INSTALL
+       steps: 
+
+       - task: TerraformInstaller@1
+         inputs:
+           terraformVersion: 'latest'
+
+       - task: TerraformTask@5
+         inputs:
+           provider: 'azurerm'
+           command: 'init'
+           backendServiceArm: 'kashi-dev-app'
+           backendAzureRmStorageAccountName: 'dvestg72'
+           backendAzureRmContainerName: 'devcontainer72'
+           backendAzureRmKey: 'terraform.tfvars'
+
+
+ - stage: TERRAFORM_VALIDATE
+   displayName: TERRAFORM_VALIDATE
+   jobs:
+     - job: TERRAFORM_VALIDATE
+       steps: 
+
+       - task: TerraformTask@5
+         inputs:
+           provider: 'azurerm'
+           command: 'init'
+           backendServiceArm: 'kashi-dev-app'
+           backendAzureRmStorageAccountName: 'devstg72'
+           backendAzureRmContainerName: 'devcontainer72'
+           backendAzureRmKey: 'terraform.tfvars'
+
+       - task: TerraformTask@5
+         inputs:
+           provider: 'azurerm'
+           command: 'validate'
+
+
+ - stage: TERRAFORM_PLAN
+   displayName: TERRAFORM_PLAN
+   jobs:
+     - job: TERRAFORM_PLAN
+       steps: 
+
+       - task: TerraformTask@5
+         inputs:
+           provider: 'azurerm'
+           command: 'init'
+           backendAzureRmStorageAccountName: 'devstg72'
+           backendAzureRmContainerName: 'devcontainer72'
+           backendAzureRmKey: 'terraform.tfvars'
+
+       - task: TerraformTask@5
+         inputs:
+           provider: 'azurerm'
+           command: 'plan'
+           environmentServiceNameAzureRM: 'kashi-dev-app'
+
+       - task: TerraformTask@5
+         inputs:
+           provider: 'azurerm'
+           command: 'apply'
+           environmentServiceNameAzureRM: 'kashi-dev-app'
