@@ -39,7 +39,7 @@ stages:
            backendServiceArm: 'kashi-dev-app'
            backendAzureRmStorageAccountName: 'statefile89234'
            backendAzureRmContainerName: 'statefile'
-           backendAzureRmKey: 'terraform.tfvars'
+           backendAzureRmKey: 'prod.terraform.tfvars'
 
        - task: TerraformTask@5
          inputs:
@@ -57,9 +57,10 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'init'
+           backendServiceArm: 'kashi-dev-app'
            backendAzureRmStorageAccountName: 'statefile89234'
            backendAzureRmContainerName: 'statefile'
-           backendAzureRmKey: 'terraform.tfvars'
+           backendAzureRmKey: 'prod.terraform.tfvars'
 
        - task: TerraformTask@5
          inputs:
